@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TestProject1
 {
@@ -77,12 +78,42 @@ namespace TestProject1
         {
             Queue<Ticket>[] result = null;
 
+            if (sourceList.Count > 0 && sourceList != null)
+            {
+                Queue<Ticket> payment = null, subscription = null, cancellation = null;
+                for (int i = 0; i < sourceList.Count; i++)
+                {
+                    switch (sourceList[i].RequestType)
+                    {
+                        case Ticket.ERequestType.Payment:
+                            payment.Enqueue(sourceList[i]);
+                            break;
+
+                        case Ticket.ERequestType.Subscription:
+                            subscription.Enqueue(sourceList[i]);
+                            break;
+
+                        case Ticket.ERequestType.Cancellation:
+                            cancellation.Enqueue(sourceList[i]);
+                            break;
+                    }
+                }
+                result[0] = payment;
+                result[1] = subscription;
+                result[2] = cancellation;
+            }
+
             return result;
         }
 
         internal static bool AddNewTicket(Queue<Ticket> targetQueue, Ticket ticket)
         {
             bool result = false;
+
+            if (ticket.RequestType )
+            {
+                targetQueue.Enqueue(ticket);
+            }
 
             return result;
         }        
