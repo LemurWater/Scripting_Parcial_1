@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace TestProject1
 {
     internal class Sandbox
@@ -8,6 +9,11 @@ namespace TestProject1
         {
             Console.WriteLine("Hello world");
             Console.WriteLine("Here you can write console prints to test your implementation outside the testing environment");
+        }
+
+        public static void Test1()
+        {
+            
         }
     }
 }
